@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Height Estimation Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <h1>Height Estimation Result Analysis</h1>
+
+    <p><strong>Reference Height (cm):</strong> <span id="refHeightValue">--</span></p>
+    <p><strong>Reference Pixel Height:</strong> <span id="refPixelValue">--</span></p>
+    <p><strong>Person Pixel Height:</strong> <span id="personPixelValue">--</span></p>
+
+    <hr>
+
+    <p><strong>Pixel-to-cm Ratio:</strong> <span id="ratioValue">--</span></p>
+    <p><strong>Estimated Real Height (cm):</strong> <span id="finalHeight">--</span></p>
+
+    <br>
+
+    <a href="upload.html">
+        <button>New Calculation</button>
+    </a>
+
+    <a href="index.html">
+        <button>Home</button>
+    </a>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const refHeight = parseFloat(params.get("refHeight"));
+const refPixel = parseFloat(params.get("refPixel"));
+const personPixel = parseFloat(params.get("personPixel"));
+const finalHeight = parseFloat(params.get("finalHeight"));
+
+if (refHeight && refPixel && personPixel && finalHeight) {
+
+    const ratio = refHeight / refPixel;
+
+    document.getElementById("refHeightValue").textContent = refHeight.toFixed(2);
+    document.getElementById("refPixelValue").textContent = refPixel.toFixed(2);
+    document.getElementById("personPixelValue").textContent = personPixel.toFixed(2);
+    document.getElementById("ratioValue").textContent = ratio.toFixed(4);
+    document.getElementById("finalHeight").textContent = finalHeight.toFixed(2);
+}
+
+</script>
+
+</div>
+</body>
+</html>
